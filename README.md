@@ -16,4 +16,4 @@ npm install
 npm run build 
 ```
 * Copy resulting **dist** file
-* Put **dist** file in the public folder of backend repository: 
+* Put **dist** file in the public folder of backend repository and follow instructions there: https://github.com/tbogdan017/weather-app-backend.git
