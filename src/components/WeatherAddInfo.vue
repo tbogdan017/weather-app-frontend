@@ -13,20 +13,21 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="right-side-info">
-        <!-- <p style="font-size: 1.5em; margin-bottom: 1em; color: #47484a">Feels like: {{ feelsLike + '°' }}</p> -->
-        <div class="temp-limits">
-            <p style="font-size: 1.5em; color: #47484a">Feels like: {{ feelsLike + '°' }}</p>
-            <div class="min-temp">
-                <img src="/temperature-min.svg" alt="">
-                <p style="font-size: 1.5em; margin-right: 1em; color: #47484a">{{ minTemp + '°' }}</p>
-            </div>
-            <div class="max-temp">
-                <img src="/temperature-max.svg" alt="">
-                <p style="font-size: 1.5em; color: #47484a">{{ maxTemp + '°' }}</p>
+    <div class="weather-wrapper__stats">
+        <div class="weather-wrapper__stats-temp">
+            <span style="color: #47484a">Feels like: {{ feelsLike + '°' }}</span>
+            <div class="weather-wrapper__stats-temp-limits">
+                <div class="weather-wrapper__stats-temp-limits--min">
+                    <img src="/temperature-min.svg" alt="">
+                    <p style="color: #47484a">{{ minTemp + '°' }}</p>
+                </div>
+                <div class="weather-wrapper__stats-temp-limits--max">
+                    <img src="/temperature-max.svg" alt="">
+                    <p style="color: #47484a">{{ maxTemp + '°' }}</p>
+                </div>
             </div>
         </div>
-        <div class="condition-wrapper">
+        <div class="weather-wrapper__stats-condition">
             <Condition :type="'Humidity'" :value="props.humidity" />
             <Condition :type="'Wind'" :value="props.wind" />
             <Condition :type="'Pressure'" :value="props.pressure" />
@@ -36,7 +37,7 @@ const props = defineProps({
 </template>
 
 <style>
-.right-side-info {
+.weather-wrapper__stats {
     width: 50%;
     display: grid;
     gap: 1em;
@@ -45,83 +46,62 @@ const props = defineProps({
     border-radius: 20px;
 }
 
-.temp-limits {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    background-color: #e2e2e2;
+.weather-wrapper__stats-temp {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border-radius: 20px;
+    background-color: #e2e2e2;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.temp-limits p {
-    margin-left: auto;
-    margin-right: auto;
-    grid-column: 2 / 4;
+.weather-wrapper__stats-temp span {
+    width: 60%;
+    font-size: 1.3rem;
+    text-align: center;
 }
 
-.min-temp {
+.weather-wrapper__stats-temp p {
+    font-size: 1.3rem;
+}
+
+.weather-wrapper__stats-temp-limits {
+    display: flex;
+    gap: 1em;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weather-wrapper__stats-temp-limits--min,
+.weather-wrapper__stats-temp-limits--max {
     display: flex;
     flex-direction: row;
-    grid-column: 2 / 3;
-    grid-row: 2;
+    gap: 0.3em;
 }
 
-.max-temp {
-    display: flex;
-    flex-direction: row;
-    grid-column: 3 / 4;
-    grid-row: 2;
-}
-
-.condition-wrapper {
+.weather-wrapper__stats-condition {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
     align-items: center;
     background-color: #e2e2e2;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-@media screen and (min-width: 1920px) {
-    .right-side-info {
-        height: 100%;
+@media screen and (320px <=width <=480px) {
+    .weather-wrapper__stats-temp span {
+        font-size: 1rem;
     }
 
-    .condition-wrapper {
-        font-size: 1.6rem;
-    }
-    
-    .temp-limits {
-        font-size: 1.5rem;
+    .weather-wrapper__stats-temp-limits--min,
+    .weather-wrapper__stats-temp-limits--max {
+        transform: scale(0.8);
     }
 }
-
-@media screen and (max-width: 500px) and (max-height: 940px) {
-    .right-side-info {
-        height: 95%;
-    }
-
-    .temp-limits {
-        font-size: 0.8em;
-    }
-
-    .min-temp {
-        transform: scale(0.9);
-    }
-
-    .max-temp {
-        transform: scale(0.9);
-    }
-
-    .condition-wrapper {
-        font-size: 1em;
-    }
-}
-
-@media screen and (max-width: 360px) and (max-height: 800px) {
-    .right-side-info {
-        height: 92%;
-    }
-} 
 </style>

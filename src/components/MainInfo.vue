@@ -21,8 +21,8 @@ function showComponent() {
 <template>
     <h3 style="color: #515659">Weather App</h3>
     <div class="search-wrapper">
-        <input @keyup.enter="showComponent" type="text" placeholder="e.g. London" v-model="state.city">
-        <button @click="showComponent" class="btn">Go</button>
+        <input class="search-wrapper__input" @keyup.enter="showComponent" type="text" placeholder="e.g. London" v-model="state.city">
+        <button @click="showComponent" class="search-wrapper__btn">Go</button>
     </div>
     <Disclaimer :class="{ active: isActive }" />
     <WeatherInfo v-if="state.isLoading" 
@@ -59,7 +59,7 @@ function showComponent() {
 
 .search-wrapper {
     margin-bottom: 1em;
-    width: 50%;
+    width: 56%; 
     height: 9%;
     display: flex;
     justify-content: center;
@@ -71,12 +71,12 @@ function showComponent() {
 }
 
 h3 {
-    margin-top: 10em;
+    margin-top: 8vh;
     margin-bottom: 0.5em;
-    width: 50%;
+    width: 56%;
 }
 
-input {
+.search-wrapper__input {
     width: 80%;
     height: 33%;
     font-size: 1rem;
@@ -88,7 +88,7 @@ input {
     border-bottom-right-radius: 0;
 }
 
-.btn {
+.search-wrapper__btn {
     width: 5%;
     height: 33%;
     border: none;
@@ -115,54 +115,73 @@ input {
     background-color: blueviolet;
 }
 
-@media screen and (min-width: 1920px) {
-    input {
-        font-size: 1.5rem;
-    }
-
+@media screen and (2000px <= width <= 2560px) {
     h3 {
-        margin-top: 5.5em;
-        font-size: 2rem;
+        width: 48%;
     }
 
-    .btn {
-        font-size: 1.3rem;
+    .search-wrapper {
+        width: 48%;
     }
 }
 
-@media screen and (max-height: 730px) {
-    .weather-info-wrapper {
-        height: 25%;
+@media screen and (992px <= width <= 1200px) {
+    h3 {
+        width: 62%;
     }
 
-    h3 {
-        margin-top: 4em;
+    .search-wrapper {
+        width: 62%;
     }
 }
 
-@media screen and (max-width: 500px) and (max-height: 940px) {
+@media screen and (width <= 1400px) {
+    .search-wrapper__btn {
+        width: 8%;
+    }
+}
+
+@media screen and (800px <= width <= 992px) {
+    h3 {
+        width: 72%;
+    }
+
+    .search-wrapper {
+        width: 72%;
+    }
+}
+
+@media screen and (600px <= width <= 800px) {
+    h3 {
+        width: 82%;
+    }
+    
+    .search-wrapper {
+        width: 82%;
+    }
+}
+
+@media screen and (480px <= width <= 600px) {
+    h3 {
+        width: 90%;
+    }
+    
     .search-wrapper {
         width: 90%;
     }
+}
 
+@media screen and (320px <= width <= 480px) {
     h3 {
-        margin-top: 3em;
-        width: 90%;
+        width: 98%;
     }
 
-    .btn {
+    .search-wrapper {
+        width: 98%;
+    }
+
+    .search-wrapper__btn {
         width: 10%;
-    }
-}
-
-@media screen and (max-width: 360px) and (max-height: 800px) {
-    .search-wrapper {
-        width: 96%;
-    }
-
-    h3 {
-        margin-top: 3em;
-        width: 96%;
     }
 }
 </style>

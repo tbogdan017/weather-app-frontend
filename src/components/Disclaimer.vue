@@ -15,20 +15,36 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-radius: 10px;
     font-size: 1.6em;
 }
 
-@media screen and (max-width: 500px) and (max-height: 940px) {
+@media screen and (992px <= width <= 1200px) {
+   .disclaimer-wrapper {
+    width: 62%;
+   }
+}
+
+@media screen and (800px <= width <= 992px) {
+   .disclaimer-wrapper {
+    width: 72%;
+   }
+}
+
+@media screen and (600px <= width <= 800px) {
+    .disclaimer-wrapper {
+        width: 82%;
+    }
+}
+
+@media screen and (480px <= width <= 600px) {
     .disclaimer-wrapper {
         width: 90%;
     }
 }
 
-@media screen and (max-width: 360px) and (max-height: 800px) {
+@media screen and (320px <= width <= 480px) {
     .disclaimer-wrapper {
-        width: 90%;
-        font-size: 1.2rem;
+        width: 98%;
     }
 }
 </style>

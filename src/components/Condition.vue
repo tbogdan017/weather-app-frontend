@@ -34,9 +34,9 @@ const defineImage = computed(() => {
 </script>
 
 <template>
-    <div class="condition-info">
-        <p style="color: #47484a; font-size: 1.2em; font-weight: bold">{{props.type}}</p>
-        <div class="cond">
+    <div class="condition-info-wrapper">
+        <p style="color: #47484a; font-weight: bold">{{props.type}}</p>
+        <div class="condition-info-wrapper__items">
             <img :src="defineImage" alt="">
             <p style="color: #47484a;">{{defineType}}</p>
         </div>
@@ -44,24 +44,24 @@ const defineImage = computed(() => {
 </template>
 
 <style>
-.condition-info {
+.condition-info-wrapper {
+    font-size: 1.2rem; 
     width: 100%;
-    margin-bottom: 0.5em;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
 
-.cond {
+.condition-info-wrapper__items {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
 
-@media screen and (max-width: 540px) and (max-height: 940px) {
-    .condition-info {
+@media screen and (320px <= width <= 480px) {
+    .condition-info-wrapper {
         font-size: 0.8rem;
     }
 }

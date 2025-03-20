@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 const props = defineProps({
     type: String,
     src: String,
@@ -15,34 +17,91 @@ const props = defineProps({
     description1: String,
     description2: String
 });
+
+const showDesc = computed(() => {
+    const desc = props.description;
+
+    const splitted = desc?.split(" ")
+    if (splitted) {
+       if (splitted.length === 7) {
+        return `${splitted[3]} ${splitted[4]} ${splitted[5]} ${splitted[6]}`
+       }
+       return splitted.join(" ")
+    }
+})
 </script>
 
 <template>
-    <div class="current-day-info">
-        <p style="font-size: 1.2em; margin-bottom: -0.8em;">{{ date }}</p>
-        <img :src="src" alt="">
-        <p style="font-size: 1.2em; font-weight: bold; margin-top: -1em;">{{ description }}</p>
-        <p style="font-size: 1.2em;">{{ `${minTemp}°/${maxTemp}°` }}</p>
+    <div class="daily-info-wrapper">
+        <div class="daily-info-wrapper__data">
+            <p style="font-size: 1.2em; margin-bottom: -0.8em;">{{ date }}</p>
+        </div>
+        <div class="daily-info-wrapper__img">
+            <img :src="src" alt="">
+        </div>
+        <div class="daily-info-wrapper__desc">
+            <p style="font-weight: bold">{{ showDesc }}</p>
+        </div>
+        <div class="daily-info-wrapper__temp">
+            <p style="font-size: 1.2em;">{{ `${minTemp}°/${maxTemp}°` }}</p>
+        </div>
     </div>
 </template>
 
 <style>
-.current-day-info {
+.daily-info-wrapper {
+    width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    text-align: center;
     color: #47484a;
 }
 
-.current-day-info img {
-    transform: scale(0.8)
+.daily-info-wrapper__desc {
+    font-size: 1.1rem;
+    height: fit-content;
+    text-align: center;
+    text-overflow: ellipsis;
 }
 
-@media screen and (min-width: 1920px) {
-    .current-day-info {
-        transform: scale(1.4);
+.daily-info-wrapper__img {
+    margin-top: 1em;
+    transform: scale(0.8);
+}
+
+@media screen and (992px <= width <= 1200px) {
+    .daily-info-wrapper__desc {
+        height: 6vh;
+    }
+}
+
+@media screen and (800px <= width <= 992px) {
+    .daily-info-wrapper__desc {
+        height: 7vh;
+    }
+}
+
+@media screen and (600px <= width <= 800px) {
+    .daily-info-wrapper__desc {
+        height: 8vh;
+    }
+}
+
+@media screen and (width <= 600px) {
+    .daily-info-wrapper__desc {
+        height: 8vh;
+    }
+}
+
+@media screen and (320px <= width <= 480px) {
+    .daily-info-wrapper__desc {
+        height: 7vh;
+    }
+
+    .daily-info-wrapper__desc {
+        font-size: 0.8rem;
     }
 }
 </style>

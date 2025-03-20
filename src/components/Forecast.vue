@@ -51,13 +51,13 @@ const props = defineProps({
 
 <style>
 h3 {
-    width: 50%;
+    width: 56%;
 }
 
 .forecast-weather-info {
     margin-top: 0.5em;
-    width: 50%;
-    height: 15%;
+    width: 56%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -68,39 +68,69 @@ h3 {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (2000px <= width <= 2560px) {
     h3 {
-        font-size: 2rem;
+        width: 48%;
     }
-}
 
-@media screen and (max-width: 1280px) {
     .forecast-weather-info {
-        height: 17%;
+        width: 48%;
     }
 }
 
-@media screen and (max-width: 500px) and (max-height: 940px) {
+@media screen and (min-width: 1600px) and (min-height: 810px) {
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (992px <= width <= 1200px) {
+    h3 {
+        width: 62%;
+    }
+
+    .forecast-weather-info {
+        width: 62%;
+    }
+}
+
+@media screen and (800px <= width <= 992px) {
+    h3 {
+        width: 72%;
+    }
+
+    .forecast-weather-info {
+        width: 72%;
+    }
+}
+
+@media screen and (600px <= width <= 800px) {
+    h3 {
+        width: 82%;
+    }
+    
+    .forecast-weather-info {
+        width: 82%;
+    }
+}
+
+@media screen and (480px <= width <= 600px) {    
+    h3 {
+        width: 90%;
+    }
+
     .forecast-weather-info {
         width: 90%;
-        height: 15%;
-        font-size: 0.75rem;
-        text-align: center;
-    }
-
-    h3 {
-        width: 85%;
     }
 }
 
-@media screen and (max-width: 360px) and (max-height: 800px) {
-    .forecast-weather-info {
-        width: 96%;
-        height: 18%;
+@media screen and (320px <= width <= 480px) {
+    h3 {
+        width: 98%;
     }
 
-    h3 {
-        width: 96%;
+    .forecast-weather-info {
+        width: 98%;
     }
 }
 </style>

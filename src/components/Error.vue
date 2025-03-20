@@ -11,8 +11,12 @@
 <style>
 .error-wrapper {
     width: 50%;
-    height: 12%;
+    height: 10%;
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     border: 1px solid red;
     border-radius: 10px;
@@ -20,27 +24,21 @@
     background-color: #e2e2e2;
 }
 
-@media screen and (max-width: 1920px) and (max-height: 1080px) {
+@media screen and (2000px <= width <= 2560px) {
     .error-wrapper {
-        height: 10%;
+        width: 48%;
     }
 }
 
-@media screen and (max-width: 1024px) and (max-height: 768px) {
+@media screen and (width <= 800px) {
     .error-wrapper {
-        height: 14%;
+        width: 70%;
     }
 }
 
-@media screen and (max-width: 500px) and (max-height: 940px) {
+@media screen and (width <= 480px) {
     .error-wrapper {
-        width: 90%;
-    }
-}
-
-@media screen and (max-width: 360px) and (max-height: 800px) {
-    .error-wrapper {
-        height: 18%;
+        width: 80%;
     }
 }
 </style>
